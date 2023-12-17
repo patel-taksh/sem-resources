@@ -8,25 +8,43 @@ import "./App.css";
 class App extends React.Component {
   constructor() {
     super();
+    this.state = {
+      route: "Upload"
+    }
   }
 
   render() {
-    return (
-      <div>
+    if(this.state.route==="Home"){
+      return(
+        <div>
+          <Navigation />
+        </div>
+      )
+    }
+    if (this.state.route === "Resources") {
+      return (
+        <div>
+          <Navigation />
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Subject subject='OOPS' />
+            <Subject subject='DE' />
+            <Subject subject='P&S' />
+            <Subject subject='HW' />
+            <Subject subject='EES' />
+            <Subject subject='MAT' />
+          </div>
+        </div>
+
+      )
+    }
+    if (this.state.route === "Upload") {
+      return(
+        <div>
         <Navigation />
-        {/* <div style={{display:"flex", justifyContent:"center"}}>
-          <Subject subject='OOPS' />
-          <Subject subject='DE' />
-          <Subject subject='P&S' />
-          <Subject subject='HW' />
-          <Subject subject='EES' />
-          <Subject subject='MAT' />
-        </div> */}
         <Uploadfiles className="container" />
-
       </div>
-
-    )
+      )
+    }
   }
 }
 
