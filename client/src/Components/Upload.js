@@ -7,18 +7,23 @@ const Uploadfiles = () => {
         event.preventDefault();
     }
     const handleDrop = (event) => {
+
         event.preventDefault();
         console.log(event.dataTransfer.files[0]);
-        const filetype = event.dataTransfer.files[0].type;
-        setFile(event.dataTransfer.files[0]);
+        const file=event.dataTransfer.files[0];
+        setFile(file);
 
     }
 
     const upload = () => {
         const formdata = new FormData();
-        const subject=document.getElementById("subject-entered").value;
+        const sub={
+            subject: document.getElementById("subject-entered").value
+        }
+        console.log(sub);
         formdata.append('file', file);
-        formdata.append('subject',subject);
+
+        axios.post('http://localhost:3001/subject', sub);
         axios.post('http://localhost:3001/uploads', formdata)
     }
     return (
