@@ -1,16 +1,23 @@
 const  express = require("express");
 const multer =require("multer");
 const cors =require("cors");
+const file_model=require('./models/model.js');
+const mongoose = require("mongoose");
 
 const app=express();
 app.use(cors());
 app.use(express.json());
+mongoose.connect('mongodb://localhost:27017')
+.then(res => console.log("Mongoose connected"))
+.catch(err => console.log(err));
 var subject;
 
 
 app.post('/subject',(req,res)=>{
     console.log(req.body.subject,"im in /subject");
     subject=req.body.subject;
+
+    res.end();
 })
 
 const storage=multer.diskStorage({
@@ -35,6 +42,11 @@ const upload=multer({storage});
 app.post('/uploads', upload.single('file'), (req,res)=>{
     // console.log(req.body);
     console.log(req.file);
+    file_model.create({name: req.file.filename})
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+
+    res.end();
 })
 
 app.listen(3001, ()=>{

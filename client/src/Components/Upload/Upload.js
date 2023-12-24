@@ -18,20 +18,24 @@ const Uploadfiles = () => {
 
     const upload = () => {
         const formdata = new FormData();
-        
-        const sub=({
+
+        const sub = ({
             subject: document.getElementById("subject").innerHTML.toLowerCase()
         })
         formdata.append('file', file);
 
-        if(file){
+        if (file) {
             axios.post('http://localhost:3001/subject', sub);
             axios.post('http://localhost:3001/uploads', formdata)
-            .then(res =>{
-                document.getElementById("subject").reset();
-            })
+                .then(res => {
+                    const sub_button = document.getElementById("subject-form");
+                    sub_button.reset();
+                    console.log("file sent to backend")
+                })
+
+                .catch(err => console.log(err))
         }
-        else{
+        else {
             console.log("Enter file");
         }
     }
@@ -44,12 +48,15 @@ const Uploadfiles = () => {
                 <h1>Drag your files here</h1>
             </div>
             <div className="pa3">
-                <button type="submit" onClick={upload} id="subject" className="shadow-5 dim">DE</button>
-                <button type="submit" onClick={upload} id="subject" className="shadow-5 dim">EES</button>
-                <button type="submit" onClick={upload} id="subject" className="shadow-5 dim">HW</button>
-                <button type="submit" onClick={upload} id="subject" className="shadow-5 dim">MAT</button>
-                <button type="submit" onClick={upload} id="subject" className="shadow-5 dim">OOPS</button>
-                <button type="submit" onClick={upload} id="subject" className="shadow-5 dim">P&S</button>
+                <form id="subject-form">
+                    <button type="submit" onClick={upload} id="subject" className="shadow-5 dim">DE</button>
+                    <button type="submit" onClick={upload} id="subject" className="shadow-5 dim">EES</button>
+                    <button type="submit" onClick={upload} id="subject" className="shadow-5 dim">HW</button>
+                    <button type="submit" onClick={upload} id="subject" className="shadow-5 dim">MAT</button>
+                    <button type="submit" onClick={upload} id="subject" className="shadow-5 dim">OOPS</button>
+                    <button type="submit" onClick={upload} id="subject" className="shadow-5 dim">P&S</button>
+                </form>
+
             </div>
 
         </div>
