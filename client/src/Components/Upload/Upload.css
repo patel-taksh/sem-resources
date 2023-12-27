@@ -4,3 +4,10 @@
     padding: 10px;
     background-color:darkgray;
 }
+
+#reset{
+    background: transparent;
+    border: none !important;
+    font-size: 0;
+    cursor: default;
+}

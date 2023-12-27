@@ -15,8 +15,7 @@ var subject;
 
 app.post('/subject',(req,res)=>{
     console.log(req.body.subject,"im in /subject");
-    subject=req.body.subject;
-
+    subject=req.body.subject
     res.end();
 })
 

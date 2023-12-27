@@ -14,45 +14,37 @@ class App extends React.Component {
     }
   }
 
-changeRoutes = (event) =>{
-  console.log(event.target.innerHTML);
-  this.setState({
-    route: event.target.innerHTML
-  })
-}
+  changeRoutes = (event) => {
+    console.log(event.target.innerHTML);
+    this.setState({
+      route: event.target.innerHTML
+    })
+  }
+
+   
 
   render() {
-    if(this.state.route==="Home"){
-      return(
-        <div>
-          <Navigation changeRoutes={this.changeRoutes}/>
-        </div>
-      )
-    }
-    if (this.state.route === "Resources") {
-      return (
-        <div>
-          <Navigation changeRoutes={this.changeRoutes}/>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <Subject subject='OOPS' />
-            <Subject subject='DE' />
-            <Subject subject='P&S' />
-            <Subject subject='HW' />
-            <Subject subject='EES' />
-            <Subject subject='MAT' />
+    return (
+      <div>
+        <Navigation changeRoutes={this.changeRoutes} />
+        {this.state.route === "Resources"
+          ? <div>
+            <div style={{ display: "flex", justifyContent: "center" }} onClick={()=>{alert("Hello")}}>
+              <Subject subject='OOPS'/>
+              <Subject subject='DE' />
+              <Subject subject='P&S' />
+              <Subject subject='HW' />
+              <Subject subject='EES' />
+              <Subject subject='MAT' />
+            </div>
           </div>
-        </div>
-
-      )
-    }
-    if (this.state.route === "Upload") {
-      return(
-        <div>
-        <Navigation changeRoutes={this.changeRoutes}/>
-        <Uploadfiles className="container" />
+          : this.state.route === "Upload"
+            ?<div>
+              <Uploadfiles className="container" />
+            </div>
+            : console.log}
       </div>
-      )
-    }
+    )
   }
 }
 
