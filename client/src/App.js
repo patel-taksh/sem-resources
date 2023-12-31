@@ -1,9 +1,11 @@
 import Navigation from './Components/Navigation/Naviagtion';
 import React from 'react';
-import Subject from './Components/Subjects';
+import Resources from './Components/Subjects/Resources.js';
 import Uploadfiles from './Components/Upload/Upload';
+import Home from './Components/Home/Home.js';
 import "./App.css";
-
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Subject from './Components/Subjects/Subjects.js';
 
 
 class App extends React.Component {
@@ -21,29 +23,21 @@ class App extends React.Component {
     })
   }
 
-   
+
 
   render() {
     return (
-      <div>
-        <Navigation changeRoutes={this.changeRoutes} />
-        {this.state.route === "Resources"
-          ? <div>
-            <div style={{ display: "flex", justifyContent: "center" }} onClick={()=>{alert("Hello")}}>
-              <Subject subject='OOPS'/>
-              <Subject subject='DE' />
-              <Subject subject='P&S' />
-              <Subject subject='HW' />
-              <Subject subject='EES' />
-              <Subject subject='MAT' />
-            </div>
-          </div>
-          : this.state.route === "Upload"
-            ?<div>
-              <Uploadfiles className="container" />
-            </div>
-            : console.log}
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Navigation />}>
+            <Route index element={<Home />} />
+            <Route path='upload' element={<Uploadfiles />} />
+            <Route path='resources'element={<Resources/>}>
+              {/* <Route path="de" target='_blank' element={<Subject subject="DE" />}/> */}
+            </Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     )
   }
 }
