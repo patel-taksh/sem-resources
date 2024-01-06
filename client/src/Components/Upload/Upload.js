@@ -28,7 +28,6 @@ const Uploadfiles = () => {
             .then(res=>{
                 setFile(null);
             })
-
             axios.post('http://localhost:3001/uploads', formdata)
                 .then(res => {
                     // const sub_button = document.getElementById("subject-form");
@@ -57,6 +56,7 @@ const Uploadfiles = () => {
                     <button type="submit" onClick={upload} id="subject" className="shadow-5 dim">MAT</button>
                     <button type="submit" onClick={upload} id="subject" className="shadow-5 dim">OOPS</button>
                     <button type="submit" onClick={upload} id="subject" className="shadow-5 dim">PnS</button>
+                    <button type="submit" onClick={upload} id="subject" className="shadow-5 dim">DS</button>
                     <button type="reset" id="reset"></button>
             </div>
 

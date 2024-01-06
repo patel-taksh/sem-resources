@@ -3,6 +3,7 @@ import React from 'react';
 import Resources from './Components/Subjects/Resources.js';
 import Uploadfiles from './Components/Upload/Upload';
 import Home from './Components/Home/Home.js';
+import Files from './Components/Files/Files.js';
 import "./App.css";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Subject from './Components/Subjects/Subjects.js';
@@ -35,8 +36,12 @@ class App extends React.Component {
             <Route path='resources'element={<Resources/>}>
               {/* <Route path="de" target='_blank' element={<Subject subject="DE" />}/> */}
             </Route>
+            <Route path='files' element={<Files />}/>
           </Route>
+
+          
         </Routes>
+        <Files />
       </BrowserRouter>
     )
   }
