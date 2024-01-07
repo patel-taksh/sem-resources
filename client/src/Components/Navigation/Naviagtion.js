@@ -13,8 +13,8 @@ function Navigation({ changeRoutes }) {
             <nav style={{display:"flex", justifyContent:"flex-end", flexDirection:"row"}}>
                 <Link to="/" className="pr3" id="nav">Home</Link>
                 <Link to="/resources" className="pr3" id="nav">Resources</Link>
-                <Link to="/upload" className="pr3" id="nav">Upload</Link>
-            </nav>
+                <Link to="/upload" className="pr3" id="nav">Upload</Link>       
+                </nav>
             <Outlet />
         </div>
     )

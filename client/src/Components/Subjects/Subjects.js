@@ -8,7 +8,7 @@ const Subject = ({subject}) =>{
             <h1 
             className="ba pa3 br4 dim shadow-1 pointer" 
             style={{width:"fit-content"}}
-            onClick={()=>{navigate('./files')}}>
+            onClick={()=>{navigate(`./${subject}`)}}>
                 {subject}
             </h1>
         </div>

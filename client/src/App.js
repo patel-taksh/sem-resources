@@ -3,9 +3,9 @@ import React from 'react';
 import Resources from './Components/Subjects/Resources.js';
 import Uploadfiles from './Components/Upload/Upload';
 import Home from './Components/Home/Home.js';
-import Files from './Components/Files/Files.js';
+import Hello from './Components/Files/Hello.js';
 import "./App.css";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, useRoutes} from "react-router-dom";
 import Subject from './Components/Subjects/Subjects.js';
 
 
@@ -27,6 +27,20 @@ class App extends React.Component {
 
 
   render() {
+    // let app=useRoutes([
+    //   {
+    //     path: '/', 
+    //     element: <Navigation />,
+    //     children:[
+    //       {path:'upload', element: <Uploadfiles />},
+    //       {path:'resources', element: <Resources />}
+    //     ]
+    //   }
+    // ])
+
+
+
+
     return (
       <BrowserRouter>
         <Routes>
@@ -34,14 +48,11 @@ class App extends React.Component {
             <Route index element={<Home />} />
             <Route path='upload' element={<Uploadfiles />} />
             <Route path='resources'element={<Resources/>}>
-              {/* <Route path="de" target='_blank' element={<Subject subject="DE" />}/> */}
+              <Route path=':subject' element={<Hello/>}/>
             </Route>
-            <Route path='files' element={<Files />}/>
           </Route>
-
           
         </Routes>
-        <Files />
       </BrowserRouter>
     )
   }
