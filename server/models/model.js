@@ -5,6 +5,14 @@ const fileSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
+    },
+    sub:{
+        type: String,
+        required: true,
+    },
+    type:{
+        type:String,
+        required:true
     }
 })
 

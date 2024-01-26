@@ -3,6 +3,7 @@ import axios from "axios";
 import './Upload.css';
 
 const Uploadfiles = () => {
+    console.log("In upload")
     const [file, setFile] = useState();
     const handleDrag = (event) => {
         event.preventDefault();
@@ -30,9 +31,6 @@ const Uploadfiles = () => {
             })
             axios.post('http://localhost:3001/uploads', formdata)
                 .then(res => {
-                    // const sub_button = document.getElementById("subject-form");
-                    // sub_button.reset();
-                    // console.log(document.getElementById("reset").click());
                     console.log("file sent to backend")
                 })
                 .catch(err => console.log(err))

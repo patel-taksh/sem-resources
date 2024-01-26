@@ -5,6 +5,7 @@ import { Link, Outlet } from "react-router-dom";
 
 function Navigation({ changeRoutes }) {
     // console.log(document.getElementById("nav"));
+    console.log("in navigation")
     return (
         <div>
             <form className="pt3">
